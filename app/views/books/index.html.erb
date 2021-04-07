@@ -1,31 +1,50 @@
-<h1>books</h1>
+<header>BOOKS</header>
 
-<div class = "head">
-  <h4>Title</h4>
-  <h4>Body</h4>
+  <h4 = class ="head">Title</h4>
+  <h4 = class = "head">Body</h4>
 </div>
 
 <!--ループ機能-->
 <main>
 <% @books.each do |book| %>
-<span><%= book.title %></span>
-<span><%= book.body %></span>
-<span><%= link_to "Show",books_show_path(book.id) %></span>
-<span><%= link_to "Edit",books_edit_path(book.id) %></span>
-<span><%= link_to "Destroy",books_destroy_path(book.id),method: :delete, "data-confirm" => "Are you sure ?" %></span>
+<div class = "main-box">
+<div class = "box1">
+<table = class = "li"><%= book.title %></table>
+</div>
+<div class = "box2">
+<table = class = "li"><%= book.body %></table>
+</div>
+<div class = "mini-box">
+<table class = "li"><%= link_to "Show",books_show_path(book.id) %></table>
+<table class ="li"><%= link_to "Edit",books_edit_path(book.id) %></table>
+<table class ="li"><%= link_to "Destroy",books_destroy_path(book.id),method: :delete, "data-confirm" => "Are you sure ?" %></table>
+</div>
+</div>
 <% end %>
 </main>
 <!--ループ機能終了-->
 
 
-
+<div class ="bottom">
 <h2>New book</h2>
 
+<!--ここから試し-->
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<!--ここまで-->
 <p>Title</p>
 <%= form_with model: @book,local:true do |f| %>
+
 <%= f.text_field :title %>
 <p>Body</p>
 <%= f.text_area :body %>
 
 <%= f.submit 'Create Book' %>
 <% end %>
+</div>
