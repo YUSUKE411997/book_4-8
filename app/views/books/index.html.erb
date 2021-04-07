@@ -1,0 +1,30 @@
+<h1>books</h1>
+
+<div class = "head">
+  <h4>Title</h4>
+  <h4>Body</h4>
+</div>
+
+<!--ループ機能-->
+<main>
+<% @books.each do |book| %>
+<span><%= book.title %></span>
+<span><%= book.body %></span>
+<span><%= link_to "show",books_show_path(book.id) %></span>
+<span><%= link_to "edit",books_edit_path(book.id) %></span>
+<% end %>
+</main>
+<!--ループ機能終了-->
+
+
+
+<h2>New book</h2>
+
+<p>Title</p>
+<%= form_with model: @book,local:true do |f| %>
+<%= f.text_field :title %>
+<p>Body</p>
+<%= f.text_area :body %>
+
+<%= f.submit 'Create Book' %>
+<% end %>
