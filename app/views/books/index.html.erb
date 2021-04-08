@@ -28,7 +28,7 @@
 <div class ="bottom">
 <h2>New book</h2>
 
-<!--ここから試し-->
+<!--ここからバリエーション試し-->
 
 <% if @book.errors.any? %>
   <%= @book.errors.count %>件のエラーが発生しました
@@ -37,7 +37,7 @@
   <% end %>
 <% end %>
 
-<!--ここまで-->
+<!--ここまでで終了-->
 <p>Title</p>
 <%= form_with model: @book,local:true do |f| %>
 

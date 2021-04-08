@@ -2,7 +2,7 @@
 <!--編集機能-->
 <h1>Editing Book</h1>
 
-<%= form_with model:@book,url:'books', local: true do |f| %>
+<%= form_with model:@book,url:"/books/#{@book.id}", local: true do |f| %>
 <p>title</p>
 <%= f.text_field :title %>
 <p>Body</p>
