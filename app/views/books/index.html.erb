@@ -38,6 +38,7 @@
 <% end %>
 
 <!--ここまでで終了-->
+
 <p>Title</p>
 <%= form_with model: @book,local:true do |f| %>
 
@@ -49,6 +50,3 @@
 <% end %>
 </div>
 
-<% if flash[:notice] %>
-    <%= flash[:notece] %>
-    <% end %>
