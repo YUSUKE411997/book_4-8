@@ -9,5 +9,10 @@
 <%= f.text_area :body %>
 <%= f.submit 'Update Book' %>
 <% end %>
+
+<% if flash[:notice] %>
+    <%= flash[:notece] %>
+<% end %>
+
 <%= link_to "Show",books_show_path %>
 <%= link_to "Back",books_path %>

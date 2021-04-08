@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   
   
   def index
-    @books = Book.all
+    @books = Book.all.order(created_at: :desc)
     @book = Book.new
   end
   
@@ -10,9 +10,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
   if @book.save
+     flash[:notice] = "successfully"
     redirect_to books_path
   else
-    @books = Book.all
+    @books = Book.all.order(created_at: :desc)
     render :index
     
   end 
@@ -31,6 +32,7 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params)
+    flash[:notice] = "successfully"
     redirect_to books_show_path(book.id)
   end 
   
