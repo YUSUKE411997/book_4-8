@@ -1,7 +1,12 @@
-
-
 <!--編集機能-->
 <h1>Editing Book</h1>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 
 <%= form_with model:@book,url:"/books/#{@book.id}", local: true do |f| %>
 <p>title</p>

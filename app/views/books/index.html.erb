@@ -1,11 +1,17 @@
 <header>BOOKS</header>
-
+<% if flash[:notice] %>
+    <div class="flash">
+         <%= flash[:notice] %>
+         <% end %>
+    </div>
+<div>
   <h4 = class ="head">Title</h4>
   <h4 = class = "head">Body</h4>
 </div>
 
+
 <!--ループ機能-->
-<main>
+<main>      
 <% @books.each do |book| %>
 <div class = "main-box">
 <div class = "box1">

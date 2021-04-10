@@ -6,9 +6,11 @@ class BooksController < ApplicationController
     @book = Book.new
   end
   
-    def show
+  
+  def show
     @book = Book.find(params[:id])
   end
+  
   
   def create
     @book = Book.new(book_params)
@@ -18,9 +20,7 @@ class BooksController < ApplicationController
   else
     @books = Book.all.order(created_at: :desc)
     render :index
-    
   end 
-  
   end 
 
 
@@ -30,16 +30,21 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   
+  
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    flash[:notice] = "successfully"
-    redirect_to books_show_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+       flash[:notice] = "successfully update"
+       redirect_to books_show_path(@book)
+    else
+      render :edit
+    end
   end 
   
   def destroy
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = "successfully destroy"
     redirect_to books_path
   end 
   
@@ -48,5 +53,6 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title,:body)
   end
+  
   
 end
