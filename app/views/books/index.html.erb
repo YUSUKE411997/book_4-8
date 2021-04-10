@@ -21,9 +21,9 @@
 <table = class = "li"><%= book.body %></table>
 </div>
 <div class = "mini-box">
-<table class = "li"><%= link_to "Show",books_show_path(book.id) %></table>
-<table class ="li"><%= link_to "Edit",books_edit_path(book.id) %></table>
-<table class ="li"><%= link_to "Destroy",books_destroy_path(book.id),method: :delete, "data-confirm" => "Are you sure ?" %></table>
+<table class ="li"><%= link_to "Show",book_path(book.id) %></table>
+<table class ="li"><%= link_to "Edit",edit_book_path(book.id) %></table>
+<table class ="li"><%= link_to "Destroy",book_path(book.id),method: :delete, "data-confirm" => "Are you sure ?" %></table>
 </div>
 </div>
 <% end %>
